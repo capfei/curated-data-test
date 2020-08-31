@@ -9,7 +9,7 @@ revisions:
           - 'Copyright (c) 2007 Free Software Foundation, Inc. <http://fsf.org/>'
         license: GPL-3.0-only
         path: LICENSE
-      - license: GPL-3.0-only
+      - license: GPL-3.0-or-later
         path: src/lib.rs        
     licensed:
       declared: GPL-3.0-only
