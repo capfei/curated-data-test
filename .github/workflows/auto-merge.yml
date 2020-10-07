@@ -1,22 +1,26 @@
- # Configuration for probot-auto-merge - https://github.com/bobvanderlinden/probot-auto-merge
-
-updateBranch: true
-deleteBranchAfterMerge: true
-reportStatus: true
-
-minApprovals:
-  CONTRIBUTOR: 1
-maxRequestedChanges:
-  NONE: 0
-blockingLabels:
-- do not merge
-
-
-
-# Will merge whenever the above conditions,
-# are met, but also the owner has approved.
-rules:
-- minApprovals:
-    OWNER: 1
-
-mergeCommitMessage: "Auto-merge bot merged {title} (#{number})"
+name: auto-merge	
+on:	
+  pull_request:	
+    types:	
+      - labeled	
+      - unlabeled	
+      - synchronize	
+      - opened	
+      - edited	
+      - ready_for_review	
+      - reopened	
+      - unlocked	
+  pull_request_review:	
+    types:	
+      - approved	
+jobs:	
+  automerge:	
+    runs-on: ubuntu-latest	
+    steps:	
+      - name: auto-merge	
+        uses: "pascalgn/automerge-action@v0.11.0"	
+        env:	
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: ""
+          AUTOMERGE: ""
+          MERGE_RETRIES: "12"
