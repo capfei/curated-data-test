@@ -22,4 +22,5 @@ jobs:
         env:	
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_LABELS: ""
-          MERGE_RETRIES: "12"
+          MERGE_METHOD_LABEL_REQUIRED: false
+          MERGE_RETRIES: "3"
